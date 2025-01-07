@@ -77,7 +77,6 @@ class VAE_LSTM(nn.Module):
         pred_data = torch.randn(self.sequ_len,self.num_of_features_en)
         for i in range(self.sequ_len):
             pred = torch.sigmoid(self.hidden2pred[i](h0))
-            #self.hidden2pred[i](h0)#torch.sigmoid(self.hidden2pred[i](h0))#self.hidden2pred[i](h0)
             pred_data[i] = pred
             h_0, c_0 = self.decoder_lstmcell(pred, (h0, c0))
         return pred_data
